@@ -1,3 +1,3 @@
-import greets from './dep';
+import greets from './dep.js';
 
 export { greets };

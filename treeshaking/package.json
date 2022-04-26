@@ -1,8 +1,5 @@
 {
   "dependencies": {
     "rollup": "^2.70.2"
-  },
-  "scripts": {
-    "build": "rollup ./src/script.js --file bundle.js"
   }
 }
