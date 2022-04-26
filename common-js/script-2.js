@@ -1,3 +1,3 @@
-const sayhello = require('./script-1');
+const sayhello = require('./index.js');
 
-sayHello('Sidharth');
+sayhello('Hello');
