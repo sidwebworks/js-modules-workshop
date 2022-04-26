@@ -1,0 +1,58 @@
+import Callout from 'nextra-theme-docs/callout';
+
+# **A hacky solution (IIFE) 🫣**
+
+Out of all the problems I talked about, the most non-trivial one is the `Scope collisions`
+
+Developers introduced one hacky trick to provide script encapsulation, using **IIFEs** or
+**Immediately invoked function expressions**
+
+## But WTF is an IIFE? 🙄
+
+It's basically this thing,
+
+```js
+(function () {
+  console.log("I'm a IIFE");
+})();
+```
+
+**A function which is executed as soon as it's created**. That's what an IIFE is.
+
+### But how does this solve our problem?
+
+If you know anything about variable scoping in Javascript, you might recall this.
+
+**Anything that's created inside a function, is LIMITED to that function only**
+
+It's variable scope can't be accessed by anything outside that function.
+
+### Applying this fix to our previous code.
+
+```html
+<body>
+  <!-- Script 1 -->
+  <script>
+    (function () {
+      let name = 'Sidharth';
+      let details = { name };
+
+      console.log('In Script 1', name, details);
+    })();
+  </script>
+
+  <!-- Script 2 -->
+  <script>
+    (function () {
+      console.log('In Script 2', name, details);
+    })();
+  </script>
+</body>
+```
+
+### Conclusion
+
+Even though this solves one main problem, and this is how many tools tried to tackle this
+for a long time. It's not an ideal solution.
+
+And we still got **2 problems left**.

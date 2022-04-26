@@ -1,0 +1,67 @@
+import Callout from 'nextra-theme-docs/callout';
+
+# **ES Modules 🥹**
+
+Ecmascript Modules or ESM for short, this format changed the JS ecosystem.
+
+It's an offical Javascript proposal to implement a standard module system in the language.
+It came out in 2015 with ES6 javascript. Most people are familiar with it these days.
+
+## Syntax
+
+This is how you share code in ESM:
+
+**Script 1** (Creator)
+
+```js
+function sayHello(firstname) {
+  console.log('Hey there ', firstname);
+}
+
+export default sayHello;
+```
+
+**Script 2** (Consumer)
+
+```js
+import sayHello from './script-1.js';
+
+sayHello();
+```
+
+In the above code, `Script 1` creates and exposes `sayHello` function, which is later
+imported by `Script 2` and then executed.
+
+### Usage in the Browser
+
+ESM is supported by most of the [modern browsers](https://caniuse.com/es6-module) these
+days.
+
+To enable ESM for a script you need to pass `type="module"` attribute to the script tag.
+
+```html
+<script src="script.js" type="module"> <script/>
+```
+
+### Usage in Node
+
+All Node versions after v14, have good support for ESM.
+
+To enable ESM for a script you can do it by:
+
+Set the `type: "module"` property inside your project's `package.json`
+
+**OR**
+
+Change the file extension from `.js` to `.mjs`
+
+### 🔍 Few important points
+
+> We will deep dive into these points with real code examples, in the workshop.
+
+- ES modules are loaded and parsed asynchronously.
+- ESM is [Tree-shakeable](https://web.dev/reduce-javascript-payloads-with-tree-shaking/),
+  (due to ES6's static module structure)
+- Can be used directly inside inline-script tags in HTML
+- You can't directly import CJS inside ES Modules (workaround: using shims).
+- You can't import directly import ESM inside CJS (workaround: dynamic imports).

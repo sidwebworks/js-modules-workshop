@@ -1,0 +1,56 @@
+import Callout from 'nextra-theme-docs/callout';
+
+# **Problems 😫**
+
+> What things led to the creation of a standard module system for Javascript?
+
+## 💥 Scope collisions inside Scripts
+
+When a script tag is loaded in browser and executed, by default it's globally scoped.
+
+**For example:** if 2 scripts `Script 1` and `Script 2` are loaded on a page like this,
+
+```html
+<body>
+  <!-- Script 1 -->
+  <script>
+    let name = 'Sidharth';
+    let details = { name };
+
+    console.log('In Script 1', name, details);
+  </script>
+
+  <!-- Script 2 -->
+  <script>
+    console.log('In Script 2', name, details);
+  </script>
+</body>
+```
+
+They have access to each other's variable scopes. In other words, there is no
+**encapsulation**.
+
+## 🛠 Code maintainabilty
+
+Before modules were introduced, there wasn't really a standard way to organise bigger
+codebases.
+
+### Most developers would do one of these 2 things to solve this,
+
+- Link a single huge script file.
+
+- Link multiple script tags for every script, this brought it's own set of problems.
+
+For example if the order of 2 script tags which may depend on each other gets changed.
+
+**Your app could crash**.
+
+## ⚡️ Performance
+
+> Whatever you wrote. Goes to the client.
+
+In short if you write some logic which might be unused, it would stay there and just get
+shipped to the client, this caused many performance issues as it slowed down the initial
+page loads.
+
+I can go on for longer, but I think all these points, prove the need of a module format.

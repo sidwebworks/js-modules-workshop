@@ -1,0 +1,56 @@
+import Callout from 'nextra-theme-docs/callout';
+
+# **A Real Module format 🧐**
+
+Common JS or CJS for short, was the first real module format which got adopted by the JS
+community.
+
+Alot of people think [**Ryan Dahl**](https://en.wikipedia.org/wiki/Ryan_Dahl) was the
+creator of Common JS as it was widely used inside Node JS apps, But that's not true.
+
+Common JS was started by A Mozilla engineer
+[**Kevin Dangoor**](https://twitter.com/dangoor) in January 2009.
+
+Node just adopted that module format. It didn't create it.
+
+<Callout type='default' emoji='📝'>
+  **Please note:** To run the code examples on your own, you will need Node JS on your
+  machine. If you don't have it installed, you can get it from here, [Download Node
+  JS](https://nodejs.org/en/download/)
+</Callout>
+
+## Syntax
+
+This is how you share code in CJS:
+
+**Script 1** (Creator)
+
+```js
+function sayHello(firstname) {
+  console.log('Hey there ', firstname);
+}
+
+module.exports = sayHello;
+```
+
+**Script 2** (Consumer)
+
+```js
+const sayhello = require('./script-1');
+
+sayHello();
+```
+
+In the above code, `Script 1` creates and exposes `sayHello` function, which is later
+required by `Script 2` and then executed.
+
+### 🔍 Few important points
+
+> We will deep dive into these points with real code examples, in the workshop.
+
+- Any file by the name `index` is treated as the root (top level file).
+- It's loaded and parsed synchronously.
+- Optionally you can omit the file extension like `.js`, the `require` function will
+  automatically try to find the file.
+- Files are required once and cached.
+- `CJS` will not work in the browser. It will have to be transpiled and bundled.
